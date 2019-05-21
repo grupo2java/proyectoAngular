@@ -6,6 +6,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.lucatic.agenda.dao.PersonaRepository;
 import com.lucatic.agenda.model.Direccion;
 import com.lucatic.agenda.model.Persona;
@@ -45,9 +46,8 @@ public class PersonaServiceImpl implements PersonaService{
 	}
 
 	@Override
-	public void update(Persona perso) {
-		// TODO Auto-generated method stub
-		personaDAO.save(perso);
+	public Persona update(Persona perso) {
+		return personaDAO.save(perso);
 		
 	}
 
@@ -125,6 +125,25 @@ public class PersonaServiceImpl implements PersonaService{
 	public List<Persona> listaPorBusqueda(String nombre) {
 		
 		return personaDAO.busquedaPorPalabra(nombre);
+	}
+
+	@Override
+	public Persona create(Persona persona) {
+		return personaDAO.save(persona);
+	}
+
+	@Override
+	public Persona findById(int id) {
+		return personaDAO.findById(id).orElse(null);
+	}
+
+	@Override
+	public Persona deleteById(int id) {
+		Persona persona = findById(id);
+		if(persona != null) {
+			personaDAO.delete(persona);
+		}
+		return persona;
 	}
 
 	

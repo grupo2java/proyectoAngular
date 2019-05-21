@@ -2,6 +2,12 @@ package com.lucatic.agenda.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreType;
+
 import java.util.List;
 import java.time.LocalDate;
 
@@ -19,6 +25,8 @@ import java.time.LocalDate;
  * 
  */
 @Entity
+@Component
+@JsonIgnoreType
 @NamedQuery(name="Persona.findAll", query="SELECT p FROM Persona p")
 public class Persona implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -38,10 +46,12 @@ public class Persona implements Serializable {
 
 	//bi-directional many-to-one association to Direccion
 	@OneToMany(mappedBy="persona")
+	@JsonIgnore
 	private List<Direccion> direcciones;
 
 	//bi-directional many-to-one association to Telefono
 	@OneToMany(mappedBy="persona")
+	@JsonIgnore
 	private List<Telefono> telefonos;
 
 	public Persona() {
