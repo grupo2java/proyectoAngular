@@ -3,6 +3,8 @@ package com.lucatic.agenda.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /**
  * @author  grupo2
@@ -29,6 +31,7 @@ public class Telefono implements Serializable {
 
 	//bi-directional many-to-one association to Persona
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="idpersona")
 	private Persona persona;
 
@@ -61,7 +64,7 @@ public class Telefono implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Telefono [idtelefono=" + idtelefono + ", telefono=" + telefono + ", persona=" + persona + "]";
+		return "Telefono [idtelefono=" + idtelefono + ", telefono=" + telefono + "]";
 	}
 
 }

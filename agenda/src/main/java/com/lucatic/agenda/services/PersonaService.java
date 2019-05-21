@@ -28,7 +28,7 @@ public interface PersonaService {
 
 	public List<Persona> list();
 	public List<Persona> listaPorBusqueda(String nombre);
-	public void update(Persona perso);
+	public Persona update(Persona perso);
 	public void add(Persona perso);
 	public void delete(int id);
 	public Persona getEmployeeById(int id);
@@ -40,6 +40,7 @@ public interface PersonaService {
 	public void addtelefono(String telefono,int idperso );
 	public void addDireccion(String direccion,String codpostal,String localidad,int idprovincia,int idpersona);
 	public String tedoyNombreLocalidad(int idprovincia);
-	
-	
+	public Persona create(Persona persona);
+	public Persona findById(int id);
+	public Persona deleteById(int id);
 }
