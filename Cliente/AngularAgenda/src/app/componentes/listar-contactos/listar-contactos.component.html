@@ -1,0 +1,29 @@
+<h1 class="text-center">PAGINA DE LISTA DE CONTACTOS</h1>
+    
+   
+   <div  class="form-group">
+   <form action="buscar"  method="post">
+     <input type="text" name="busqueda" id="busqueda" placeholder="Escriba el nombre de la busqueda">
+      <input type="submit" value="Submit">
+   </form>
+   
+    </div>
+    <table class="table table-striped">
+			<thead>
+				<tr>
+					<td scope="col" class="text-center" >Nombre</td>
+          <td scope="col" colspan="4" >Apellido</td>
+        </tr>
+    </thead>
+    <tr *ngFor="let persona of personas">
+      <td class="text-center">{{persona.nombre}}</td> 
+      <td class="text-center">{{persona.apellido1}}</td>
+      
+    </tr>
+    
+    
+    </table>
+    
+    <a class="btn btn-block btn-primary" routerLink="/formularioContacto">Añadir Contacto</a>
+    <a class="btn btn-block btn-danger"href="volver">Volver</a>
+    
